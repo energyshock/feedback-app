@@ -38,6 +38,24 @@ export const FeedbackProvider = ({ children }) => {
     }
   };
 
+  // Update feedback item
+  const updateFeedback = (id, updItem) => {
+    // https://www.udemy.com/course/react-front-to-back-2022/learn/lecture/29768046#questions/16569578
+    // merging objects
+    setFeedback(
+      feedback.map(item =>
+        item.id === id
+          ? {
+              ...item,
+              ...updItem,
+            }
+          : item
+      )
+      // also fine
+      // setFeedback(feedback.map(item => (item.id === id ? data : item)));
+    );
+  };
+
   // Set item to be updated
   const editFeedback = item => {
     setFeedbackEdit({
@@ -50,10 +68,11 @@ export const FeedbackProvider = ({ children }) => {
     <FeedbackContext.Provider
       value={{
         feedback,
+        feedbackEdit,
         deleteFeedback,
         addFeedback,
         editFeedback,
-        feedbackEdit,
+        updateFeedback,
       }}
     >
       {children}
