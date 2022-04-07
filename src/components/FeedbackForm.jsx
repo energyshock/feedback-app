@@ -51,6 +51,7 @@ function FeedbackForm() {
       }
       setText('');
       setBtnDisabled(true);
+      setRating(10);
     }
   }
 
